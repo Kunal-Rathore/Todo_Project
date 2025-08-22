@@ -15,7 +15,7 @@ const app = express();
 app.use(cookieParser());
 app.use(express.json());
 app.use(cors({
-    origin: "*",
+    origin: "https://todo-project-kohl.vercel.app/",
     credentials: true,
 }));
 
