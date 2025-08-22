@@ -32,4 +32,8 @@ app.use('/issignedin', checkToken);   // to check does token exists
 app.use('/sign', signup_in);         // route which handels signup and signin 
 app.use('/todos', todos);           // route which handels todos operations 
 app.use('/logout', logout);
+
+app.get('/', (req, res) => {
+    res.send("Server activated");
+})
 app.listen(3000);
