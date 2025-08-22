@@ -9,8 +9,6 @@ const logout = require("./routes/logout_route");
 const checkToken = require("./routes/checkToken_route");
 const cookieParser = require("cookie-parser");
 
-const serverless = require("serverless-http");
-
 const app = express();
 
 
@@ -40,5 +38,4 @@ app.get('/', (req, res) => {
 })
 
 
-module.exports = app;
-module.exports.handler = serverless(app);
+app.listen(3000);
