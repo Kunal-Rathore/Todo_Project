@@ -1,0 +1,347 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+
+@font-face {
+    font-family: 'ModistaPro';
+    src: url("./font/ModistaPro-Medium.otf");
+}
+
+@font-face {
+    font-family: 'Heming';
+    src: url("./font/heming-variable.ttf");
+}
+
+body {
+    background-color: #000000;
+    overflow-x: hidden;
+    border: 3px solid rgb(255, 255, 255);
+
+    margin: 0px;
+    padding: 0px;
+}
+
+.usernameWithHi {
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    padding: 10px 0 0 30px;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+
+.hiBox {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hiBox canvas {
+    width: 100%;
+    height: 100%;
+}
+
+.heroDiv_1 {
+    height: 99vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.heroDiv_2 {
+    height: 50vh;
+    width: 25vw;
+    border: 3px solid black;
+    border-top-left-radius: 24%;
+    border-bottom-right-radius: 24%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #F0F7EE;
+    min-width: 184px;
+    min-height: 184px;
+}
+
+.signUpButton,
+.signInButton {
+    height: 2.5em;
+    width: 5em;
+    font-size: 20px;
+    border: 3px solid black;
+    border-radius: 7%;
+    background-color: rgb(130, 216, 238);
+    cursor: pointer;
+    font-family: "Heming";
+}
+
+.signUpdiv,
+.signIndiv {
+    border: 3px solid black;
+    border-radius: 12%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding: 30px;
+    background-color: yellow;
+}
+
+#signUpdiv {
+    height: 65vh;
+    width: 35vw;
+    min-width: 473px;
+    min-height: 424px;
+}
+
+.signUp_heading,
+.signIn_heading {
+    font-size: 28px;
+    font-family: "Heming";
+    margin: 2%;
+}
+
+.signup_title,
+.signin_title {
+
+    margin: 2% 0% 4% 2%;
+}
+
+.firstlastname {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    width: 100%;
+}
+
+.firstlastname #firstname,
+.firstlastname #firstname {
+    width: 38%;
+}
+
+.signUpinputs,
+.signIninputs {
+
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.signUpinputs {
+    height: 70%;
+    width: 100%;
+}
+
+.signIninputs {
+    height: 50%;
+    width: 100%;
+}
+
+
+
+input,
+select,
+option,
+.SubmitButton,
+.addTodoButton,
+.deleteTodoButton,
+.doneButton,
+.logOut {
+    border: 2px solid black;
+    border-radius: 6px;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+
+.logOut,
+.doneButton,
+.deleteTodoButton,
+.addTodoButton {
+    cursor: pointer;
+}
+
+.SubmitButton:hover,
+.addTodoButton:hover {
+    background-color: rgba(243, 38, 236, 0.984);
+}
+
+
+#signIndiv {
+    height: 50vh;
+    width: 27vw;
+    min-width: 250px;
+    min-height: 294px;
+}
+
+.todoMain_div {
+    margin-top: 1.5%;
+    margin-bottom: 1%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.TodoHerocontainer {
+    height: 70vh;
+    width: 55vw;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    background-color: #80ced7;
+}
+
+
+
+.date {
+    margin-left: 1.5%;
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    margin: 10px
+}
+
+
+.todoList {
+    font-size: 18px;
+    border: 3px solid #ffffff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+
+
+.todoTitle {
+    width: 250px;
+    font-family: 'ModistaPro';
+    font-weight: 300;
+}
+
+.doneButton {
+    width: 94px;
+}
+
+.notDone {
+    background-color: rgba(243, 36, 8, 0.952);
+
+}
+
+.done {
+    background-color: rgba(75, 243, 8, 0.952);
+
+}
+
+.deleteTodoTD {
+    width: 150px;
+}
+
+
+#addTodoDiv {
+    height: 47vh;
+    width: 22vw;
+    border: 3px solid rgb(209, 209, 209);
+    border-radius: 5%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    background-color: #9ad1d4;
+}
+
+.addTodo_heading {
+    font-size: 50px;
+    font-family: "Heming";
+    font-weight: 500;
+    margin: 0px;
+}
+
+.addTodoForm {
+    width: 100%;
+    height: 60%;
+    padding: 10px 15px;
+    border: 3px solid white;
+    border-radius: 5%;
+    font-size: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.addTodoInputs {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+
+@media (max-width:905px) {
+    .addTodo_heading {
+        font-size: 40px;
+    }
+
+
+}
+
+
+@media (max-width: 1280px) {
+
+    .signUpButton,
+    .signInButton {
+        height: 3em;
+        width: 4em;
+        font-size: larger;
+    }
+
+    .heroDiv_2 {
+        height: 40vh;
+        width: 38vw;
+        min-width: 318px;
+        min-height: 313px;
+    }
+
+    .todoMain_div {
+        height: auto;
+        width: 100vw;
+        flex-direction: column;
+        gap: 90px;
+        padding: 20px;
+        align-items: center;
+    }
+
+    .TodoHerocontainer {
+        width: 100%;
+        min-width: 390px;
+        min-height: 745px;
+        /*here the width is in respect to todoMainDiv */
+    }
+
+    #addTodoDiv {
+        height: 40vh;
+        width: 40vw;
+        min-width: 334px;
+        min-height: 387px;
+    }
+
+    .addTodoForm {
+        width: 80%;
+        /*here the width is in respect to addTodoDiv */
+    }
+}
