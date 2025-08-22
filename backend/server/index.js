@@ -15,9 +15,10 @@ const app = express();
 app.use(cookieParser());
 app.use(express.json());
 app.use(cors({
-    origin: "https://todo-project-git-main-kunal-rathores-projects-3c5b48fa.vercel.app/",
+    origin: "https://todo-project-git-main-kunal-rathores-projects-3c5b48fa.vercel.app",
     credentials: true,
-  
+    sameSite: 'None',
+    secure: true
 }));
 
 app.use(rateLimit({
