@@ -1,6 +1,8 @@
 
 
 
+const serverUrl = "https://todo-backend-kunal-rathores-projects-3c5b48fa.vercel.app";
+
 
 addEventListener("DOMContentLoaded", onLoad);
 
@@ -8,7 +10,7 @@ async function onLoad(event) {
     event.preventDefault();
     try {
         const isTokenAvailable = await axios({
-            url: "http://localhost:3000/issignedin/checktoken",
+            url: `${serverUrl}/issignedin/checktoken`,
             method: "GET",
             withCredentials: true
         });
@@ -69,7 +71,7 @@ async function signUp(event) {
     try {
         const signUpResponse = await axios({
             method: "POST",
-            url: "http://localhost:3000/sign/signup",
+            url: `${serverUrl}/sign/signup`,
             data: {
                 firstname: firstname,
                 lastname: lastname,
@@ -109,7 +111,7 @@ async function signIn(event) {
     try {
         const signInResponse = await axios({
             method: "POST",
-            url: "http://localhost:3000/sign/signin",
+            url: `${serverUrl}/sign/signin`,
             data: { email: email, password: password },
             withCredentials: true,
         });
@@ -197,7 +199,7 @@ async function fetchTodos() {
     try {
         const response = await axios({
             method: "GET",
-            url: "http://localhost:3000/todos/fetchtodos",
+            url: `${serverUrl}/todos/fetchtodos`,
             withCredentials: true
         });
 
@@ -280,7 +282,7 @@ async function addTodo(event) {
     try {
         const response = await axios({
             method: "POST",
-            url: "http://localhost:3000/todos/addtodo",
+            url: `${serverUrl}/todos/addtodo`,
             data: { title: title, isDone: isDone },
             withCredentials: true
         });
@@ -303,7 +305,7 @@ async function addTodo(event) {
 async function deletetodo(todoId) {
     try {
         const response = await axios({
-            url: `http://localhost:3000/todos/deletetodo/${todoId}`,
+            url: `${serverUrl}/todos/deletetodo/${todoId}`,
             method: "DELETE",
             withCredentials: true
         });
@@ -327,7 +329,7 @@ async function updateTodo(todoId) {
 
     try {
         const res = await axios({
-            url: `http://localhost:3000/todos/updatetodo/${todoId}`,
+            url: `${serverUrl}/todos/updatetodo/${todoId}`,
             withCredentials: true,
             method: "PUT",
         });
@@ -349,11 +351,12 @@ async function logOut() {
 
     try {
         const response = await axios({
-            url: "http://localhost:3000/logout",
+            url: `${serverUrl}/logout`,
             method: "POST",
             withCredentials: true
         });
         if (response.status === 200) {
+            localStorage.removeItem("username");
             alert(response.data.message);
             window.location.reload();
         }
