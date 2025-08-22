@@ -34,6 +34,8 @@ signup_in.use(express.json());
         const token = req.token;
         res.cookie('token', token, {
             httpOnly: true,
+            secure: true,
+            sameSite: "none",
             maxAge: 7 * 24 * 60 * 60 * 1000, // 7days
         });
         res.json({ username: req.username, message: "Signin successfull" });
