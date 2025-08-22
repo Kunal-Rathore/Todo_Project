@@ -9,13 +9,15 @@ const logout = require("./routes/logout_route");
 const checkToken = require("./routes/checkToken_route");
 const cookieParser = require("cookie-parser");
 
+const serverless = require("serverless-http");
+
 const app = express();
 
 
 app.use(cookieParser());
 app.use(express.json());
 app.use(cors({
-    origin: "http://localhost:5500",
+    origin: "*",
     credentials: true,
 }));
 
@@ -36,4 +38,7 @@ app.use('/logout', logout);
 app.get('/', (req, res) => {
     res.send("Server activated");
 })
-app.listen(3000);
+
+
+module.exports = app;
+module.exports.handler = serverless(app);
