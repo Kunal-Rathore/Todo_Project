@@ -16,7 +16,8 @@ async function onLoad(event) {
         });
 
         if (isTokenAvailable.status === 200) {
-            loadTodo();
+            const username = isTokenAvailable.data.username;
+            loadTodo(username);
         }
     } catch (error) {
         console.log(error.message);
@@ -117,7 +118,6 @@ async function signIn(event) {
         });
 
         if (signInResponse.status === 200) {
-            localStorage.setItem('username', signInResponse.data.username);
             window.location.reload();
         }
     } catch (error) {
@@ -133,11 +133,10 @@ async function signIn(event) {
 
 
 
-function loadTodo() {
+function loadTodo(username) {
 
     const element = document.querySelector("body");
 
-    const username = localStorage.getItem('username');
     element.innerHTML = ` 
   
     <p class="usernameWithHi">

@@ -44,7 +44,6 @@ async function signInauth(req, res, next) {
             const userId = await checkUserForSignIn(req.body);
             if (userId) {
                 req.token = generateToken(userId.id);
-                req.username = userId.username;
                 next();  // if the inputs are valid then create a token and return it in the headers
             }
             else {

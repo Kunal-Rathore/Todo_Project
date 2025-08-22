@@ -38,7 +38,7 @@ signup_in.use(express.json());
             sameSite: "none",
             maxAge: 7 * 24 * 60 * 60 * 1000, // 7days
         });
-        res.json({ username: req.username, message: "Signin successfull" });
+        res.json({ message: "Signin successfull" });
 
     });
 }

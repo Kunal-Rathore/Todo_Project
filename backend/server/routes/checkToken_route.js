@@ -1,15 +1,18 @@
 
 const express = require("express");
+const { Todos } = require("../auth/auth");
+const { findInUserModel } = require("../CRUD/usersModel");
 
 const checkToken = express();
 
-checkToken.get("/checktoken", (req, res) => {
-    const token = req.cookies["token"];
-    if (token) {
-        res.status(200).json({ message: "ok" }); // token exists and i can also add to check token is valid or not but no issues, in fetch add and delete I am validating token 
-    }
-    else {
-        res.status(400).json({ message: "Token not exists" }); // token is not existing 
+checkToken.get("/checktoken", Todos, async (req, res) => {
+
+    try {
+        const userId = req.userId;
+        const userData = await findInUserModel(userId);
+        res.status(200).json({ username: userData.username, message: "ok" });
+    } catch (error) {
+        res.status(401).json({ message: error.message });
     }
 });
 

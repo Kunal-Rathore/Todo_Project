@@ -30,12 +30,28 @@ async function checkUserForSignIn(data) {
         const isValid = await bcrypt.compare(data.password, response.password);  // it check whether the input password and stored in db is correct or not
 
         if (isValid) {
-            return { id: response._id, username: response.username }; // return id to create token
+            return { id: response._id }; // return id to create token
         }
-        return false;
+        else {
+            throw new Error("Password Incorrect");
+
+        }
     }
     return false;
 }
 
+async function findInUserModel(userId) {
+    const result = await usersModel.findOne({
+        _id: userId
+    });
+    if (result) {
+        return result;
+    }
+    else {
+        throw new Error("Not found");
 
-module.exports = { storeUser, checkUserForSignIn };
+    }
+}
+
+
+module.exports = { storeUser, checkUserForSignIn, findInUserModel };
