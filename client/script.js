@@ -144,7 +144,7 @@ function loadTodo() {
    <span class="hiBox">
       <canvas id="canvas"></canvas>
    </span>
-   kunal__chronicles
+   ${username}
 </p>
 
     <div class="todoMain_div">
