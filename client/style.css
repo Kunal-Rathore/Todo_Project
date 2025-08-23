@@ -5,10 +5,6 @@
 }
 
 
-@font-face {
-    font-family: 'ModistaPro';
-    src: url("./font/ModistaPro-Medium.otf");
-}
 
 @font-face {
     font-family: 'Heming';
@@ -230,7 +226,6 @@ option,
 
 .todoTitle {
     width: 250px;
-    font-family: 'ModistaPro';
     font-weight: 300;
 }
 
@@ -266,7 +261,7 @@ option,
 }
 
 .addTodo_heading {
-    font-size: 50px;
+    font-size: 45px;
     font-family: "Heming";
     font-weight: 500;
     margin: 0px;
