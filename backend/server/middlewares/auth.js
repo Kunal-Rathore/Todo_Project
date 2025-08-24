@@ -14,9 +14,8 @@ async function signUpauth(req, res, next) {
 
     if (!checkInputs_response.success) // if not success then need to response and return (cause no signup possible with wrong input) 
     {
-
-        const errors = checkInputs_response.error.issues.map(err => ({ field: err.path[0], message: err.message }));
-        res.status(401).json({ message: errors });
+        const errors = checkInputs_response.error.issues.map(err => err.message);
+        res.status(400).json({ message: errors });
         return;
     }
     else // do signup by storing the data in db by password hasing
@@ -34,9 +33,8 @@ async function signInauth(req, res, next) {
         const checkInputs_response = checkInputsforSignin(req.body);
         if (!checkInputs_response.success) // if not success then need to response and return (cause signin not possible with wrong input)
         {
-            const errors = checkInputs_response.error.issues.map(err => ({ field: err.path[0], message: err.message }))
-            res.status(401).json({ message: errors });
-            return;
+            const errors = checkInputs_response.error.issues.map(err => err.message);
+            return res.status(400).json({ message: errors });
         }
         else  // do signin by checking  data in db after password hashing using auth
         {
@@ -47,36 +45,36 @@ async function signInauth(req, res, next) {
                 next();  // if the inputs are valid then create a token and return it in the headers
             }
             else {
-                res.status(404).json({ message: "User not found" });
+                return res.status(404).json({ message: "User not found" });
             }
 
         }
     } catch (error) {
-        console.log("checkUserForSignIn error- ", error);
-        res.status(400).json({ message: error.message });
+        if (error.name === "PassIncorrect") {
+            return res.status(404).json({ message: error.message });
+        }
+        return res.status(500).json({ message: error.message });
     }
 
 }
 
 
-async function Todos(req, res, next) { // to fetchtodos first need to check token is valid or not
+async function checkTokenValid(req, res, next) { // to fetchtodos first need to check token is valid or not
 
     try {
         const token = req.cookies['token'];
         if (!token) {
-            res.status(400).json({ message: "No token found" });
-            return;
+            return res.status(401).json({ message: "No token found" });
         }
         const decodedToken = checkToken(token); // either have userId or throws error
         req.userId = decodedToken.userId;
         next();
     }
     catch (error) {
-        console.log("checkToken error- ", error);
-        res.status(400).json({ message: error.message });
+        return res.status(401).json({ message: error.message });
     }
 }
 
 
 
-module.exports = { signInauth, signUpauth, Todos };
+module.exports = { signInauth, signUpauth, checkTokenValid };

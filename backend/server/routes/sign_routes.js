@@ -3,10 +3,10 @@
 // post-> signup, signin
 
 const express = require("express");
-const { signInauth, signUpauth } = require("../auth/auth.js");
+const { signInauth, signUpauth } = require("../middlewares/auth.js");
 const { storeUser } = require("../CRUD/usersModel");
 
-const signup_in = express();
+const signup_in = express.Router();
 signup_in.use(express.json());
 
 //signup route ->  Input validation ->  password hashing -> storeIn Db (catch if user already Exists)
@@ -15,11 +15,10 @@ signup_in.use(express.json());
 
         try {
             await storeUser(req.body);  // *here I got stucked getting server failure because I didn't await it
-            res.status(200).json({ message: "Signup successfull" });
+            return res.status(200).json({ message: "Signup successfull" });
 
         } catch (error) {
-            console.log("storeUser error- ", error);
-            res.status(400).json({ message: error.message });
+            return res.status(500).json({ message: error.message });
         }
     });
 }
@@ -38,7 +37,7 @@ signup_in.use(express.json());
             sameSite: "none",
             maxAge: 7 * 24 * 60 * 60 * 1000, // 7days
         });
-        res.json({ message: "Signin successfull" });
+        return res.status(200).json({ message: "Signin successfull" });
 
     });
 }

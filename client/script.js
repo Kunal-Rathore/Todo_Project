@@ -1,7 +1,8 @@
 
 
 
-const serverUrl = "https://todo-backend-kunal-rathores-projects-3c5b48fa.vercel.app";
+// const serverUrl = "https://todo-backend-kunal-rathores-projects-3c5b48fa.vercel.app";
+const serverUrl = "http://localhost:3000";
 
 
 addEventListener("DOMContentLoaded", onLoad);
@@ -86,17 +87,10 @@ async function signUp(event) {
         }
     } catch (error) {
         if (error.response) {
-            if (error.response.status === 401) // zod error
+            if (error.response.status === 400) // zod error
             {
-                const allMessages_withFields = error.response.data.message;
-                let structuredMessages;
-                allMessages_withFields.forEach(m => {
-
-                    const titleANDmessage = `${m.field}: ${m.message}`;
-                    structuredMessages += titleANDmessage;
-                });
-
-                alert(structuredMessages);
+                const allMessages = JSON.stringify(error.response.data.message);
+                alert(allMessages);
             }
             else { alert(error.response.data.message); }
         }
@@ -151,7 +145,7 @@ function loadTodo(username) {
       <div class= "TodoHerocontainer"> 
         </div>
              
-        <div id="addTodoDiv">
+        <div id="addTodoDivAndLogOut">
         <h2 class="addTodo_heading">Add todo</h2>
 
         <form class="addTodoForm">
@@ -180,7 +174,6 @@ function loadTodo(username) {
 
 `;
 
-
     new window.DotLottie({
         autoplay: true,
         loop: true,
@@ -206,10 +199,8 @@ async function fetchTodos() {
             const todosContainer = document.querySelector(".TodoHerocontainer");
             todosContainer.innerHTML = "";
 
-            const todos = response.data.todos;
+            const todos = response.data.todos;   // array of objects [ {},{}...]
             const groupedDates = groupTodosByDate(todos);
-            console.log(groupedDates);
-
 
             // now for each todos creating seprate elements and storing in them then appending to main one
             for (const date of Object.keys(groupedDates)) {
@@ -286,7 +277,7 @@ async function addTodo(event) {
             withCredentials: true
         });
 
-        if (response.status == 200) {
+        if (response.status === 201) {
             alert(response.data.message);
             fetchTodos();
         }
@@ -309,7 +300,7 @@ async function deletetodo(todoId) {
             withCredentials: true
         });
 
-        if (response.status == 200) {
+        if (response.status === 200) {
             fetchTodos();
         }
     } catch (error) {
@@ -355,7 +346,6 @@ async function logOut() {
             withCredentials: true
         });
         if (response.status === 200) {
-            localStorage.removeItem("username");
             alert(response.data.message);
             window.location.reload();
         }

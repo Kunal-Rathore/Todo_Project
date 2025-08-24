@@ -13,14 +13,14 @@ function checkInputsforSignup(data) {
         lastname: z.string()
             .min(5, "Must have atleast 5 characters")
             .max(80),
-        email: z.email("Email is invalid")
+        email: z.string().email("Email is invalid")
             .min(5, "Must have atleast 5 characters")
             .max(80)
-            .toLowerCase(),
+            .transform((val) => val.toLowerCase()),
         username: z.string()
             .min(5, "Must have atleast 5 characters")
             .max(80)
-            .toLowerCase(),
+            .transform((val) => val.toLowerCase()),
         password: z.string()
             .min(5, "Must have atleast 5 characters")
             .max(100)
@@ -44,13 +44,13 @@ function checkInputsforSignin(data) {
 
     // defining structure,
     const structure = z.object({
-        email: z.email("Email is invalid")
+        email: z.string().email("Email is invalid")
             .min(5, "Email must contain atleast 5 characters")
             .max(80)
-            .toLowerCase(),
+            .transform((val) => val.toLowerCase()),
 
-        password: z.string("Password should be a string")
-            .max(100)
+        password: z.string()
+            .max(100, "Please decrease the password length")
     });
 
     //checking the input data
@@ -60,4 +60,14 @@ function checkInputsforSignin(data) {
 }
 
 
-module.exports = { checkInputsforSignup, checkInputsforSignin };
+function checkInputs_ToAddTodo(data) {
+    const structure = z.object({
+        title: z.string()
+            .min(4, "Tilte should be least length of 4 characters")
+            .max(180, "Please decrease the length of title"),
+    });
+
+    return structure.safeParse(data);
+}
+
+module.exports = { checkInputsforSignup, checkInputsforSignin, checkInputs_ToAddTodo };
