@@ -26,29 +26,24 @@ async function deleteTodoInTodoModel(userId, todoId) {
         userId: userId,
         _id: todoId
     });
-    if (res.deletedCount != 0) {   // if a todo is deleted (deletedCount != 0) then return true.
-        return true;
+    if (res.deletedCount === 0) {   // if a todo is not deleted then throw error.
+        const err = new Error("Todo not found");
+        err.name = "TodoNotFound";
+        throw err;
     }
-    return false;
 }
 
 async function updateTodoInTodoModel(userId, todoId) {
 
-    try {
-        const todo = await todosModel.findOne({
-            userId: userId,
-            _id: todoId
-        });
+    const updated = await todosModel.findOneAndUpdate(
+        { userId: userId, _id: todoId },
+        [{ $set: { isDone: { $not: "$isDone" } } }]
+    );
 
-        if (!todo) { return false }
-
-        const result = await todosModel.updateOne(
-            { userId: userId, _id: todoId },
-            { $set: { isDone: !todo.isDone } });
-        return result.modifiedCount > 0;
-    } catch (error) {
-        throw new Error(error);
-
+    if (!updated) {
+        const err = new Error("Invalid todo");
+        err.name = "InvalidTodo";
+        throw err;
     }
 }
 

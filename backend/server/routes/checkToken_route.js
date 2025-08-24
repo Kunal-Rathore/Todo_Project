@@ -1,18 +1,18 @@
 
 const express = require("express");
-const { Todos } = require("../auth/auth");
+const { checkTokenValid } = require("../middlewares/auth");
 const { findInUserModel } = require("../CRUD/usersModel");
 
-const checkToken = express();
+const checkToken = express.Router();
 
-checkToken.get("/checktoken", Todos, async (req, res) => {
+checkToken.get("/checktoken", checkTokenValid, async (req, res) => {
 
     try {
         const userId = req.userId;
         const userData = await findInUserModel(userId);
-        res.status(200).json({ username: userData.username, message: "ok" });
+        return res.status(200).json({ username: userData.username, message: "ok" });
     } catch (error) {
-        res.status(401).json({ message: error.message });
+        return res.status(401).json({ message: error.message });
     }
 });
 

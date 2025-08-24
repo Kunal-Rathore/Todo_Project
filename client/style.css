@@ -15,9 +15,6 @@ body {
     background-color: #000000;
     overflow-x: hidden;
     border: 3px solid rgb(255, 255, 255);
-
-    margin: 0px;
-    padding: 0px;
 }
 
 .usernameWithHi {
@@ -28,7 +25,6 @@ body {
     font-size: 18px;
     font-weight: 600;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-
 }
 
 .hiBox {
@@ -49,7 +45,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 .heroDiv_2 {
@@ -87,6 +82,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+    justify-content: center;
     padding: 30px;
     background-color: yellow;
 }
@@ -94,7 +90,7 @@ body {
 #signUpdiv {
     height: 65vh;
     width: 35vw;
-    min-width: 473px;
+    min-width: 367px;
     min-height: 424px;
 }
 
@@ -119,8 +115,8 @@ body {
 }
 
 .firstlastname #firstname,
-.firstlastname #firstname {
-    width: 38%;
+.firstlastname #lastname {
+    width: 48%;
 }
 
 .signUpinputs,
@@ -175,7 +171,7 @@ option,
 #signIndiv {
     height: 50vh;
     width: 27vw;
-    min-width: 250px;
+    min-width: 271px;
     min-height: 294px;
 }
 
@@ -248,7 +244,7 @@ option,
 }
 
 
-#addTodoDiv {
+#addTodoDivAndLogOut {
     height: 47vh;
     width: 22vw;
     border: 3px solid rgb(209, 209, 209);
@@ -261,7 +257,7 @@ option,
 }
 
 .addTodo_heading {
-    font-size: 45px;
+    font-size: 40px;
     font-family: "Heming";
     font-weight: 500;
     margin: 0px;
@@ -288,15 +284,6 @@ option,
 
 
 @media (max-width:905px) {
-    .addTodo_heading {
-        font-size: 40px;
-    }
-
-
-}
-
-
-@media (max-width: 1280px) {
 
     .signUpButton,
     .signInButton {
@@ -308,9 +295,65 @@ option,
     .heroDiv_2 {
         height: 40vh;
         width: 38vw;
-        min-width: 318px;
-        min-height: 313px;
+        min-width: 374px;
+        min-height: 454px;
     }
+
+    .addTodo_heading {
+        font-size: 40px;
+    }
+
+    #signIndiv {
+        height: 40vh;
+        width: 18vw;
+    }
+
+    #signUpdiv {
+        height: 44vh;
+        width: 35vw;
+    }
+
+    .firstlastname #firstname,
+    .firstlastname #lastname {
+        width: 38%;
+    }
+
+
+
+}
+
+
+@media (min-width: 906px)and (max-width: 1280px) {
+
+    .signUpButton,
+    .signInButton {
+        height: 3em;
+        width: 4em;
+        font-size: larger;
+    }
+
+    .heroDiv_2 {
+        height: 40vh;
+        width: 38vw;
+        min-width: 374px;
+        min-height: 454px;
+    }
+
+    #signIndiv {
+        height: 58vh;
+        width: 30vw;
+    }
+
+    #signUpdiv {
+        height: 44vh;
+        width: 35vw;
+    }
+
+    .firstlastname #firstname,
+    .firstlastname #lastname {
+        width: 38%;
+    }
+
 
     .todoMain_div {
         height: auto;
@@ -328,7 +371,7 @@ option,
         /*here the width is in respect to todoMainDiv */
     }
 
-    #addTodoDiv {
+    #addTodoDivAndLogOut {
         height: 40vh;
         width: 40vw;
         min-width: 334px;
@@ -337,6 +380,6 @@ option,
 
     .addTodoForm {
         width: 80%;
-        /*here the width is in respect to addTodoDiv */
+        /*here the width is in respect to addTodoDivAndLogOut */
     }
 }
