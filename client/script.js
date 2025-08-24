@@ -1,8 +1,7 @@
 
 
 
-// const serverUrl = "https://todo-backend-kunal-rathores-projects-3c5b48fa.vercel.app";
-const serverUrl = "http://localhost:3000";
+const serverUrl = "https://todo-backend-kunal-rathores-projects-3c5b48fa.vercel.app";
 
 
 addEventListener("DOMContentLoaded", onLoad);
