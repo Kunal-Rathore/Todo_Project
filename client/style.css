@@ -299,6 +299,7 @@ option,
         min-height: 454px;
     }
 
+
     .addTodo_heading {
         font-size: 40px;
     }
@@ -318,8 +319,33 @@ option,
         width: 38%;
     }
 
+    .todoMain_div {
+        height: auto;
+        width: 100vw;
+        flex-direction: column;
+        gap: 90px;
+        padding: 20px;
+        align-items: center;
+    }
 
+    .TodoHerocontainer {
+        width: 100%;
+        min-width: 390px;
+        min-height: 745px;
+        /*here the width is in respect to todoMainDiv */
+    }
 
+    #addTodoDivAndLogOut {
+        height: 40vh;
+        width: 40vw;
+        min-width: 334px;
+        min-height: 387px;
+    }
+
+    .addTodoForm {
+        width: 80%;
+        /*here the width is in respect to addTodoDivAndLogOut */
+    }
 }
 
 
