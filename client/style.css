@@ -75,8 +75,8 @@ body {
     font-family: "Heming";
 }
 
-.signUpdiv,
-.signIndiv {
+.signUpForm,
+.signInForm {
     border: 3px solid black;
     border-radius: 12%;
     display: flex;
@@ -87,7 +87,7 @@ body {
     background-color: yellow;
 }
 
-#signUpdiv {
+#signUpForm {
     height: 65vh;
     width: 35vw;
     min-width: 367px;
@@ -168,7 +168,7 @@ option,
 }
 
 
-#signIndiv {
+#signInForm {
     height: 50vh;
     width: 27vw;
     min-width: 271px;
@@ -304,12 +304,12 @@ option,
         font-size: 40px;
     }
 
-    #signIndiv {
+    #signInForm {
         height: 40vh;
         width: 18vw;
     }
 
-    #signUpdiv {
+    #signUpForm {
         height: 44vh;
         width: 35vw;
     }
@@ -365,12 +365,12 @@ option,
         min-height: 454px;
     }
 
-    #signIndiv {
+    #signInForm {
         height: 58vh;
         width: 30vw;
     }
 
-    #signUpdiv {
+    #signUpForm {
         height: 44vh;
         width: 35vw;
     }
