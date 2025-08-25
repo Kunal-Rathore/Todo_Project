@@ -27,35 +27,36 @@ async function onLoad(event) {
 function LoadsignUp() {
     const element = document.querySelector(".heroDiv_1");
     element.innerHTML = `     
-       <form class="signUpdiv" id="signUpdiv">
+      <form class="signUpForm" id="signUpForm">
         <h2 class="signUp_heading">SignUp</h2>
         <p class="signup_title">Signup now and get full access to our app</p>
         <div class="signUpinputs">
-            <div class="firstlastname"> <input type="text" placeholder="Firstname" id="firstname">
-                <input type="text" placeholder="Lastname" id="lastname">
+            <div class="firstlastname">
+                <input type="text" placeholder="Firstname" id="firstname" required>
+                <input type="text" placeholder="Lastname" id="lastname" required>
             </div>
-            <input type="text" placeholder="Username" id="username">
-            <input type="email" placeholder="Email" id="email">
-            <input type="password" placeholder="Password" id="password">
+            <input type="text" placeholder="Username" id="username" required>
+            <input type="email" placeholder="Email" id="email" required>
+            <input type="password" placeholder="Password" id="password" required>
             <button type="submit" class="SubmitButton">Submit</button>
         </div>
     </form>`;
-    document.querySelector(".signUpdiv").addEventListener("submit", signUp);
+    document.querySelector(".signUpForm").addEventListener("submit", signUp);
 }
 
 function LoadsignIn() {
     const element = document.querySelector(".heroDiv_1");
     element.innerHTML = `
-      <form class="signIndiv"  id="signIndiv">
+      <form class="signInForm" id="signInForm">
         <h2 class="signIn_heading">SignIn</h2>
         <p class="signin_title">Signin and explore the functionalities</p>
-        <div class="signIninputs"> <input type="email" placeholder="Email" id="email">
-            <input type="password" placeholder="Password" id="password">
+        <div class="signIninputs"> <input type="email" placeholder="Email" id="email" required>
+            <input type="password" placeholder="Password" id="password" required>
             <button type="submit" class="SubmitButton">Submit</button>
         </div>
     </form>
     `;
-    document.querySelector(".signIndiv").addEventListener("submit", signIn);
+    document.querySelector(".signInForm").addEventListener("submit", signIn);
 }
 
 
