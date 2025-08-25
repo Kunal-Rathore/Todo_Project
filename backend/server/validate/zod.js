@@ -8,21 +8,21 @@ function checkInputsforSignup(data) {
     // defining structure,
     const structure = z.object({
         firstname: z.string()
-            .min(5, "Must have atleast 5 characters")
+            .min(5, "Firstname must have atleast 5 characters")
             .max(80),
         lastname: z.string()
-            .min(5, "Must have atleast 5 characters")
+            .min(5, "Lastname must have atleast 5 characters")
             .max(80),
-        email: z.string().email("Email is invalid")
-            .min(5, "Must have atleast 5 characters")
+        email: z.email("Email is invalid")
+            .min(5, "Email must have atleast 5 characters")
             .max(80)
             .transform((val) => val.toLowerCase()),
         username: z.string()
-            .min(5, "Must have atleast 5 characters")
+            .min(5, "Username must have atleast 5 characters")
             .max(80)
             .transform((val) => val.toLowerCase()),
         password: z.string()
-            .min(5, "Must have atleast 5 characters")
+            .min(5, "Password must have atleast 5 characters")
             .max(100)
             .refine((val) => /[A-Z]/.test(val), { message: "Password must contain atleast one uppercase character" })
 
@@ -44,7 +44,7 @@ function checkInputsforSignin(data) {
 
     // defining structure,
     const structure = z.object({
-        email: z.string().email("Email is invalid")
+        email: z.email("Email is invalid")
             .min(5, "Email must contain atleast 5 characters")
             .max(80)
             .transform((val) => val.toLowerCase()),
