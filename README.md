@@ -1,3 +1,4 @@
+
 # 📝 Todo App – Documentation
 
 A full-stack Todo application built with the **MERN stack (MongoDB, Express.js, Node.js)** and **vanilla JavaScript frontend**.  
@@ -49,26 +50,39 @@ The application features **user authentication, todo management with CRUD operat
 
 ---
 
+
 ## 📂 Project Structure
 ```
-/
-├── index.html          # Main HTML file
-├── style.css           # Stylesheet
-├── script.js           # Frontend logic
-├── index.js            # Express server
-├── vercel.json         # Deployment configuration
-├── auth.js             # Authentication middleware
-├── zod.js              # Validation schemas
-├── utils.js            # JWT utilities
-├── db.js               # Database models
-└── CRUD/
-    ├── usersModel.js   # User operations
-    ├── todosModel.js   # Todo operations
-└── routes/
-    ├── sign_routes.js      # Authentication routes
-    ├── todos_routes.js     # Todo routes
-    ├── logout_route.js     # Logout route
-    └── checkToken_route.js # Token validation
+Todo_Project/
+├── backend/
+│   └── server/
+│       ├── CRUD/
+│       │   ├── todosModel.js
+│       │   └── usersModel.js
+│       ├── db/
+│       │   └── db.js
+│       ├── middlewares/
+│       │   └── auth.js
+│       ├── routes/
+│       │   ├── checkToken_route.js
+│       │   ├── logout_route.js
+│       │   ├── sign_routes.js
+│       │   └── todos_routes.js
+│       ├── utils/
+│       │   └── utils.js
+│       └── validate/
+│           └── zod.js
+├── client/
+│   ├── assets/
+│   ├── font/
+│   ├── index.html
+│   ├── script.js
+│   └── style.css
+├── .gitignore
+├── index.js
+├── package.json
+├── package-lock.json
+└── vercel.json
 ```
 
 ---
@@ -117,8 +131,8 @@ The application features **user authentication, todo management with CRUD operat
 
 1. Clone the repository  
    ```bash
-   git clone <repo-url>
-   cd <repo-folder>
+   git clone https://github.com/Kunal-Rathore/Todo_Project.git
+   cd Todo_Project
    ```
 2. Install dependencies  
    ```bash
@@ -222,23 +236,20 @@ sequenceDiagram
 
 ---
 
-## 🛡️ Security Layer (Applied Throughout)
-```
-+-----------------+
-| Security Checks |
-+-----------------+
-       |
-       |--> Rate Limiting (400 req/15min)
-       |
-       |--> CORS Protection
-       |
-       |--> Input Validation (Zod)
-       |
-       |--> JWT Verification
-       |
-       |--> Secure Cookies (HTTP-only)
-       |
-       +--> MongoDB Query Validation
+
+
+## 🛡️ Security Layer
+
+```mermaid
+graph TD
+    A[Security Layer]
+    A --> B[Rate Limiting - 400 req / 15 min]
+    A --> C[CORS Protection]
+    A --> D[Input Validation - Zod Schemas]
+    A --> E[JWT Verification]
+    A --> F[Secure Cookies - HTTP-only, SameSite]
+    A --> G[Password Hashing - bcrypt]
+    A --> H[MongoDB Query Validation]
 ```
 
 ---

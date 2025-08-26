@@ -28,7 +28,7 @@ todos.post("/addtodo", checkTokenValid, async (req, res) => {
         const userId = req.userId;
         const zodResponse = checkInputs_ToAddTodo(req.body);
         if (!zodResponse.success) {
-            const messages = zodResponse.error.issues.map(err => err.message);
+            const messages = zodResponse.error.issues.map(err => err.message);  // sends array of message object
             return res.status(400).json({ message: messages });
         }
 
@@ -45,7 +45,6 @@ todos.delete("/deletetodo/:id", checkTokenValid, async (req, res) => {
     try {
         const userId = req.userId;
         await deleteTodoInTodoModel(userId, req.params.id);
-
         return res.status(200).json({ message: "Todo deleted successfully" });
     }
     catch (error) {

@@ -1,7 +1,17 @@
+// notyf
+
+const notyf = new Notyf({
+    duration: 2000, // how long to show (ms)
+    position: { x: 'right', y: 'top' } // where to show
+});
 
 
 
-const serverUrl = "https://todo-backend-kunal-rathores-projects-3c5b48fa.vercel.app";
+
+// server relate code 
+
+// const serverUrl = "https://todo-backend-kunal-rathores-projects-3c5b48fa.vercel.app";
+const serverUrl = "http://localhost:3000";
 
 
 addEventListener("DOMContentLoaded", onLoad);
@@ -86,15 +96,20 @@ async function signUp(event) {
             window.location.reload();
         }
     } catch (error) {
+        const allMessages = (error.response.data.message); // will be array of messages cause zod errors
         if (error.response) {
-            if (error.response.status === 400) // zod error
+            if (error.response.status === 400 && Array.isArray(allMessages)) // zod error
             {
-                const allMessages = JSON.stringify(error.response.data.message);
-                alert(allMessages);
+                // console.log(allMessages);
+                allMessages.forEach((element, index) => {
+                    setTimeout(() => {
+                        notyf.error(element);
+                    }, index * 400);           //increase time for each message by index *400ms
+                });
             }
-            else { alert(error.response.data.message); }
+            else { notyf.error(error.response.data.message); }
         }
-        else { alert(error.message); }
+        else { notyf.error(error.message); }
     }
 }
 
@@ -116,11 +131,23 @@ async function signIn(event) {
         }
     } catch (error) {
         if (error.response) { // error by backend
-            const message = JSON.stringify(error.response.data.message);
-            alert(message);
+
+            const message = error.response.data.message;
+
+            if (error.response.status === 400 && Array.isArray(message)) // zod error, means error in form of array need forEach
+            {
+                message.forEach((message, index) => {
+                    setTimeout(() => {
+                        notyf.error(message);
+                    }, index * 400)
+                });
+            }
+            else {
+                notyf.error(message);
+            }
 
         } else {
-            alert(error.message); //network error etc.
+            notyf.error(error.message); //network error etc.
         }
     }
 }
@@ -129,7 +156,7 @@ async function signIn(event) {
 
 function loadTodo(username) {
 
-    const element = document.querySelector("body");
+    const element = document.querySelector(".app");
 
     element.innerHTML = ` 
   
@@ -255,10 +282,10 @@ async function fetchTodos() {
         }
     } catch (error) {
         if (error.response) {
-            alert(error.response.data.message);
+            notyf.error(error.response.data.message);
         }
         else {
-            alert(error.message);
+            notyf.error(error.message);
         }
     }
 }
@@ -278,15 +305,24 @@ async function addTodo(event) {
         });
 
         if (response.status === 201) {
-            alert(response.data.message);
+            notyf.success(response.data.message);
             fetchTodos();
         }
     } catch (error) {
         if (error.response) {
-            alert(error.response.data.message);
+            const messages = error.response.data.message;
+            if (error.response.status === 400) // zod error need of forEach
+            {
+                console.log(error);
+                (messages.forEach(er => notyf.error(er)));
+            }
+            else {
+                notyf.error(messages);
+            }
         }
         else {
             alert(error.message);
+            notyf.error(error.message);
         }
     }
 }
@@ -301,14 +337,15 @@ async function deletetodo(todoId) {
         });
 
         if (response.status === 200) {
+            notyf.success(response.data.message);
             fetchTodos();
         }
     } catch (error) {
         if (error.response) {
-            alert(error.response.data.message);
+            notyf.error(error.response.data.message);  // work in both cases like invalidTodo or db fails
         }
         else {
-            alert(error.message);
+            notyf.error(error.message); // frontend error
         }
     }
 
@@ -324,14 +361,15 @@ async function updateTodo(todoId) {
             method: "PUT",
         });
         if (res.status === 200) {
+            notyf.success(res.data.message);
             fetchTodos();
         }
     } catch (error) {
         if (error.response) {
-            alert(error.response.data.message);
+            notyf.error(error.response.data.message);
         }
         else {
-            alert(error.message);
+            notyf.error(error.message);
         }
 
     }
@@ -354,7 +392,7 @@ async function logOut() {
             alert(error.response.data.message);
         }
         else {
-            alert(response.message);
+            alert(error.message);
         }
     }
 }
