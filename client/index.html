@@ -6,25 +6,30 @@
     <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf/notyf.min.css"> <!-- Notyf css-->
+
     <title>Todo-app</title>
 </head>
 
 <body>
-
-    <div class="heroDiv_1">
-        <div class="heroDiv_2">
-            <button class="signUpButton" onclick="LoadsignUp()">Sign up</button>
-            <button class="signInButton" onclick="LoadsignIn()">Sign in</button>
+    <div class="app">
+        <div class="heroDiv_1">
+            <div class="heroDiv_2">
+                <button class="signUpButton" onclick="LoadsignUp()">Sign up</button>
+                <button class="signInButton" onclick="LoadsignIn()">Sign in</button>
+            </div>
         </div>
     </div>
 
 </body>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> <!--axios script-->
+<script src="https://cdn.jsdelivr.net/npm/notyf/notyf.min.js"></script> <!--notyf script-->
 <script type="module">
     import { DotLottie } from "https://cdn.jsdelivr.net/npm/@lottiefiles/dotlottie-web/+esm";
     window.DotLottie = DotLottie; // make available to other scripts
 </script>
+
+<script src="script.js"></script>
 
 
 </html>
