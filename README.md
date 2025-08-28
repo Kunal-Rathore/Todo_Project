@@ -155,10 +155,6 @@ Todo_Project/
 - 📧 Email verification for new users  
 - 🔑 Password reset functionality  
 - 🏷 Todo categories/tags  
-- 📆 Due dates and reminders  
-- 🖱 Drag-and-drop todo organization  
-- 👥 Collaborative todo lists  
-- 📱 Mobile application version  
 - 🔗 Social media authentication (Google/GitHub)  
 - 🔍 Advanced filtering and search  
 
