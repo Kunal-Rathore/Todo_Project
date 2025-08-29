@@ -70,19 +70,23 @@ Todo_Project/
 │       │   └── todos_routes.js
 │       ├── utils/
 │       │   └── utils.js
-│       └── validate/
-│           └── zod.js
+│       ├── validate/
+│       │   └── zod.js
+│       ├── .env
+│       ├── index.js
+│       ├── package-lock.json
+│       ├── package.json
+        └── vercel.json
 ├── client/
 │   ├── assets/
+│   │   └── favicon.ico
 │   ├── font/
+│   │   └── heming-variable.ttf
 │   ├── index.html
 │   ├── script.js
 │   └── style.css
-├── .gitignore
-├── index.js
-├── package.json
-├── package-lock.json
-└── vercel.json
+└── .gitignore
+
 ```
 
 ---
